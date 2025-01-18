@@ -1,7 +1,8 @@
 "use client"
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
-import { useSession, signIn } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
+import { ToastContainer, toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
 const page = () => {
@@ -9,7 +10,18 @@ const page = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false); // State to track loading
   const router = useRouter()
+
+  const handleClick = async () => {
+    setLoading(true); // Start loading and disable the button
+
+    // Simulate a delay (e.g., API call or some action)
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // After the action is complete, stop the loader
+    setLoading(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -25,11 +37,21 @@ const page = () => {
       router.push('/')
     } else {
       setError('Invalid email or password')
+      toast.error('Invalid email or password', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
     }
   }
 
   return (
     <div>
+      <ToastContainer />
       <div className="signup py-14 flex items-center">
         <div className="left w-1/2">
           <Image width={800} height={800} src={'/images/Side Image.svg'} alt="Img"></Image>
@@ -49,19 +71,22 @@ const page = () => {
 
               {/* Password Input */}
               <div className="password w-72 py-2 my-3 border-b border-gray-400">
-                <input className="w-full focus:outline-none placeholder:text-sm" placeholder="Password" name='password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                <input className="w-full focus:outline-none placeholder:text-sm" placeholder="Password" name='password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
               </div>
+              {(loading) && <div className="text-red-500">Loading...</div>}
 
               {/* Login and Forgot Password Buttons */}
               <div className="buttons mt-7">
                 <button type='submit' className="bg-red-500 text-white text-sm px-8 py-3 rounded-sm">Login</button>
-                <button type="button" className="text-red-500 text-sm ml-20">Forgot Password?</button>
+                <button onClick={handleClick} disabled={loading} type="button" className="text-red-500 text-sm ml-20">Forgot Password?</button>
               </div>
             </form>
 
             {/* Google Login Button */}
             <div className="buttons mt-1">
-              <button onClick={() => signIn('google')} className="w-full px-4 py-2 border border-gray-400 flex justify-center gap-2 rounded-sm text-black">
+              <button onClick={() => {signIn('google'), {
+                callbackUrl: `/`
+              }}} className="w-full px-4 py-2 border border-gray-400 flex justify-center gap-2 rounded-sm text-black">
                 <img className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />
                 <span>Login with Google</span>
               </button>

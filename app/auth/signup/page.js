@@ -11,7 +11,7 @@ const page = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { isLoading, errors },
   } = useForm()
 
   const onSubmit = async (data) => {
@@ -59,12 +59,15 @@ const page = () => {
               <div className="password w-72 py-2 my-3 border-b border-gray-400">
                 <input className='w-full focus:outline-none placeholder:text-sm' placeholder='Password' {...register("password", {required: {value: true, message: 'This field is required!'}})} />
               </div>
+              {(isLoading) && <p className='text-red-500'>Creating account...</p>}
 
               <div className="buttons flex flex-col mt-7">
-                <button type='submit' className='my-1 bg-red-500 text-white text-sm px-8 py-3 rounded-sm'>Create Account</button>
+                <button disabled={isLoading} type='submit' className='my-1 bg-red-500 text-white text-sm px-8 py-3 rounded-sm'>Create Account</button>
               </div>
             </form>
-            <button onClick={() => { signIn('google') }} className="w-full px-4 py-2 border border-gray-400 flex justify-center gap-2 rounded-sm text-black">
+            <button onClick={() => { signIn('google', {
+              callbackUrl: `/`
+            }) }} disabled={isLoading} className="w-full px-4 py-2 border border-gray-400 flex justify-center gap-2 rounded-sm text-black">
               <img className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />
               <span>Login with Google</span>
             </button>

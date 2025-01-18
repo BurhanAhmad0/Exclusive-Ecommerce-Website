@@ -56,6 +56,7 @@ export const authOptions = NextAuth({
   },
   session: {
     strategy: 'jwt',
+    maxAge: 30 * 60, // Set session to expire after 30 minutes (in seconds)
   },
   callbacks: {
     async jwt({ token, user }) {

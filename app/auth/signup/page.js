@@ -33,7 +33,7 @@ const page = () => {
     <div>
       <div className="signup py-14 flex items-center">
         <div className="left w-1/2">
-          <Image width={800} height={800} src={'/Side Image.svg'} alt="Img"></Image>
+          <Image width={800} height={800} src={'/images/Side Image.svg'} alt="Img"></Image>
         </div>
         <div className="right w-1/2 flex flex-col items-center">
           <div className="headings w-72 text-start">

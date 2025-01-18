@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useSession } from "next-auth/react";
 import { usePathname } from 'next/navigation';
@@ -24,7 +25,30 @@ const Contact = () => {
                 body: JSON.stringify(data),
             })
             let res = await a.json()
-            console.log(res)
+            // console.log(res)
+
+            if (res.success) {
+                toast.success("Message Sent Successfully!", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined
+                });
+            }
+            else {
+                toast.error("Failed to send message!", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined
+                });
+            }
         } catch (error) {
             console.log(error)
         }
@@ -32,13 +56,19 @@ const Contact = () => {
 
     return (
         <div className='mb-32'>
+            <ToastContainer />
             <div className="top flex justify-between items-center px-24 py-16">
                 <div className="path">
                     <span>{`Home / ${path.replace('/', "").charAt(0).toUpperCase() + path.slice(2)}`}</span>
                 </div>
 
                 <div className="greeting">
-                    <p>Welcome! <span className='text-red-500'>{`${(session) && session.user.first_name}`}</span></p>
+                    <p>Welcome! <span className="text-red-500">
+                        {session ?
+                            (session.user.name ? session.user.name.split(' ')[0] : `${session.user.first_name}`)
+                            : ''
+                        }
+                    </span></p>
                 </div>
             </div>
 
@@ -46,7 +76,7 @@ const Contact = () => {
                 <div className="left w-[30%] shadow-gray-300 shadow-sm">
                     <div className="one p-8">
                         <div className="head flex items-center gap-3">
-                            <img className='w-10' src="/phone.png" alt="Phone" />
+                            <img className='w-10' src="/images/phone.png" alt="Phone" />
                             <p className='font-semibold my-3'>Call To Us</p>
                         </div>
                         <div className="text">
@@ -59,7 +89,7 @@ const Contact = () => {
 
                     <div className="two p-8">
                         <div className="head flex items-center gap-3">
-                            <img className='w-10' src="/mail.png" alt="Mail" />
+                            <img className='w-10' src="/images/mail.png" alt="Mail" />
                             <p className='font-semibold my-3'>Write To Us</p>
                         </div>
                         <div className="text">
@@ -73,28 +103,28 @@ const Contact = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="shadow-gray-300 h-[478px] shadow-sm grid grid-cols-1 gap-6 md:grid-cols-3 p-5">
                     <div>
                         <input
-                            {...register("name", {required: {value: true, message: 'This field is required!'}})}
+                            {...register("name", { required: { value: true, message: 'This field is required!' } })}
                             className="w-full p-3 rounded-sm bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500"
                             placeholder="Your Name"
                         />
                     </div>
                     <div>
                         <input
-                            {...register("email", {required: {value: true, message: 'This field is required!'}})}
+                            {...register("email", { required: { value: true, message: 'This field is required!' } })}
                             className="w-full p-3 rounded-sm bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500"
                             placeholder="Your Email"
                         />
                     </div>
                     <div>
                         <input
-                            {...register("phone", {required: {value: true, message: 'This field is required!'}})}
+                            {...register("phone", { required: { value: true, message: 'This field is required!' } })}
                             className="w-full p-3 rounded-sm bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500"
                             placeholder="Your Phone"
                         />
                     </div>
                     <div className="md:col-span-3">
                         <textarea
-                            {...register("message", {required: {value: true, message: 'This field is required!'}})}
+                            {...register("message", { required: { value: true, message: 'This field is required!' } })}
                             rows="6"
                             className="w-full h-full resize-none p-3 rounded-sm bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500"
                             placeholder="Your Message"

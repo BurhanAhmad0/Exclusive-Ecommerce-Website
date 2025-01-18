@@ -12,8 +12,7 @@ export async function POST(request) {
             name,
             email,
             phone,
-            message,
-            createdAt: new Date()  // Correct assignment for createdAt
+            message
         });
 
         await enquiry.save();  // Save the document to the database

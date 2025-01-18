@@ -22,7 +22,7 @@ const About = () => {
           <p className='text-sm my-10'>Exclusive has more than 1 Million products to offer, growing at a very fast. Exclusive offers a diverse assotment in categories ranging  from consumer.</p>
         </div>
         <div className="img">
-          <Image width={800} height={800} src={'/Side Image-about.svg'} alt="Img"></Image>
+          <Image width={800} height={800} src={'/images/Side Image-about.svg'} alt="Img"></Image>
         </div>
       </div>
 
@@ -30,7 +30,7 @@ const About = () => {
 
         <div className="box border border-gray-400 rounded-md p-7">
           <div className="icon flex items-center justify-center">
-            <img className='w-14' src="/sellers.png" alt="sales" />
+            <img className='w-14' src="/images/sellers.png" alt="sales" />
           </div>
           <div className="info text-center my-2">
             <h2 className='text-4xl font-bold my-1'>10.5k</h2>
@@ -40,7 +40,7 @@ const About = () => {
 
         <div className="box text-white bg-red-500 border border-gray-400 rounded-md p-7">
           <div className="icon flex items-center justify-center">
-            <img className='w-14' src="/dollar.png" alt="dollar" />
+            <img className='w-14' src="/images/dollar.png" alt="dollar" />
           </div>
           <div className="info text-center my-2">
             <h2 className='text-4xl font-bold my-1'>33k</h2>
@@ -50,7 +50,7 @@ const About = () => {
 
         <div className="box border border-gray-400 rounded-md p-7">
           <div className="icon flex items-center justify-center">
-            <img className='w-14' src="/customer.png" alt="sales" />
+            <img className='w-14' src="/images/customer.png" alt="sales" />
           </div>
           <div className="info text-center my-2">
             <h2 className='text-4xl font-bold my-1'>45.5k</h2>
@@ -60,7 +60,7 @@ const About = () => {
 
         <div className="box border border-gray-400 rounded-md p-7">
           <div className="icon flex items-center justify-center">
-            <img className='w-14' src="/sale.png" alt="sales" />
+            <img className='w-14' src="/images/sale.png" alt="sales" />
           </div>
           <div className="info text-center my-2">
             <h2 className='text-4xl font-bold my-1'>25k</h2>
@@ -75,46 +75,46 @@ const About = () => {
         <div className="cards flex items-center justify-center gap-10 pt-10">
           <div className="card">
             <div className="image">
-              <Image width={300} height={300} src={'/tom-cruise.svg'} alt="Img"></Image>
+              <Image width={300} height={300} src={'/images/tom-cruise.svg'} alt="Img"></Image>
             </div>
             <div className="info my-3">
               <h2 className='text-4xl'>Tom Cruise</h2>
               <p className='text-sm'>Founder & Chairman</p>
             </div>
             <div className="social-icons flex items-center justify-start gap-3">
-              <img src="/Icon-Twitter.png" alt="twitter" />
-              <img src="/icon-instagram.png" alt="instagram" />
-              <img src="/Icon-Linkedin.png" alt="linkedin" />
+              <img src="/images/Icon-Twitter.png" alt="twitter" />
+              <img src="/images/icon-instagram.png" alt="instagram" />
+              <img src="/images/Icon-Linkedin.png" alt="linkedin" />
             </div>
           </div>
 
           <div className="card">
             <div className="image">
-              <Image width={300} height={300} src={'/emma-watson.svg'} alt="Img"></Image>
+              <Image width={300} height={300} src={'/images/emma-watson.svg'} alt="Img"></Image>
             </div>
             <div className="info my-3">
               <h2 className='text-4xl'>Emma Watson</h2>
               <p className='text-sm'>Managing Director</p>
             </div>
             <div className="social-icons flex items-center justify-start gap-3">
-              <img src="/Icon-Twitter.png" alt="twitter" />
-              <img src="/icon-instagram.png" alt="instagram" />
-              <img src="/Icon-Linkedin.png" alt="linkedin" />
+              <img src="/images/Icon-Twitter.png" alt="twitter" />
+              <img src="/images/icon-instagram.png" alt="instagram" />
+              <img src="/images/Icon-Linkedin.png" alt="linkedin" />
             </div>
           </div>
 
           <div className="card">
             <div className="image">
-              <Image width={300} height={300} src={'/will-smith.svg'} alt="Img"></Image>
+              <Image width={300} height={300} src={'/images/will-smith.svg'} alt="Img"></Image>
             </div>
             <div className="info my-3">
               <h2 className='text-4xl'>Will Smith</h2>
               <p className='text-sm'>Product Desiger</p>
             </div>
             <div className="social-icons flex items-center justify-start gap-3">
-              <img src="/Icon-Twitter.png" alt="twitter" />
-              <img src="/icon-instagram.png" alt="instagram" />
-              <img src="/Icon-Linkedin.png" alt="linkedin" />
+              <img src="/images/Icon-Twitter.png" alt="twitter" />
+              <img src="/images/icon-instagram.png" alt="instagram" />
+              <img src="/images/Icon-Linkedin.png" alt="linkedin" />
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ const About = () => {
 
         <div className="box p-7">
           <div className="icon flex items-center justify-center">
-            <img className='w-12' src="/delivery.png" alt="sales" />
+            <img className='w-12' src="/images/delivery.png" alt="sales" />
           </div>
           <div className="info text-center my-3">
             <h2 className='text-1xl font-bold my-1'>FREE AND FAST DELIVERY</h2>
@@ -143,7 +143,7 @@ const About = () => {
 
         <div className="box p-7">
           <div className="icon flex items-center justify-center">
-            <img className='w-12' src="/customer-service.png" alt="sales" />
+            <img className='w-12' src="/images/customer-service.png" alt="sales" />
           </div>
           <div className="info text-center my-3">
             <h2 className='text-1xl font-bold my-1'>24/7 CUSTOMER SERVICES</h2>
@@ -153,7 +153,7 @@ const About = () => {
 
         <div className="box p-7">
           <div className="icon flex items-center justify-center">
-            <img className='w-12' src="/guarantee.png" alt="sales" />
+            <img className='w-12' src="/images/guarantee.png" alt="sales" />
           </div>
           <div className="info text-center my-3">
             <h2 className='text-1xl font-bold my-1'>MONEY BACK GUARANTEE</h2>

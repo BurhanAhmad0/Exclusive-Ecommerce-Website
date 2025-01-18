@@ -10,7 +10,7 @@ const Footer = () => {
                     <p className='my-3 text-sm'>Get 10% off on your first order</p>
                     <div className="email w-fit relative">
                         <input className='border border-white rounded-md bg-black w-52 h-11 px-4' type="email" name="email" id="email" placeholder='Enter your email' />
-                        <img className='w-5 absolute top-3 right-3' src="/icon-send.png" alt="send" />
+                        <img className='w-5 absolute top-3 right-3' src="/images/icon-send.png" alt="send" />
                     </div>
                 </div>
 
@@ -42,17 +42,17 @@ const Footer = () => {
                     <h3 className='my-4 font-bold text-xl'>Download App</h3>
                     <p className='my-3 text-sm'>Save $3 with App New User Only</p>
                     <div className="qr-code flex items-center gap-2">
-                        <img src="/Qr Code.jpg" alt="qr code" />
+                        <img src="/images/Qr Code.jpg" alt="qr code" />
                         <div className="download-buttons">
-                            <img className='my-1' src="/google-play-store.png" alt="google play store" />
-                            <img className='my-1' src="/appstore.png" alt="appstore" />
+                            <img className='my-1' src="/images/google-play-store.png" alt="google play store" />
+                            <img className='my-1' src="/images/appstore.png" alt="appstore" />
                         </div>
                     </div>
                     <div className="social-icons my-5 flex items-center gap-8">
-                        <img src="/facebook.png" alt="facebook" />
-                        <img src="/twitter.png" alt="twitter" />
-                        <img src="/instagram.png" alt="instagram" />
-                        <img src="/linkedin.png" alt="linkdin" />
+                        <img src="/images/facebook.png" alt="facebook" />
+                        <img src="/images/twitter.png" alt="twitter" />
+                        <img src="/images/instagram.png" alt="instagram" />
+                        <img src="/images/linkedin.png" alt="linkdin" />
                     </div>
                 </div>
             </div>

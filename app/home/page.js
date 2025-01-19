@@ -72,7 +72,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flash_sale">
+        <div className="flash_sale border-b border-gray-500 mb-16">
           <div className="cont-head">
             <div className='mt-20 flex items-center justify-start gap-2'>
               <div className='bg-red-500 w-5 h-8 rounded-md'></div>
@@ -124,7 +124,47 @@ export default function Home() {
               )}
             </div>
           </div>
+
+          <div className="btn flex items-center justify-center py-10">
+            <button className="text-white text-sm bg-red-500 rounded-sm px-9 py-3">View All Products</button>
+          </div>
         </div>
+
+        <div className="offers flex items-center justify-center gap-10 py-16">
+
+          <div className="box p-7">
+            <div className="icon flex items-center justify-center">
+              <img className='w-12' src="/images/delivery.png" alt="sales" />
+            </div>
+            <div className="info text-center my-3">
+              <h2 className='text-1xl font-bold my-1'>FREE AND FAST DELIVERY</h2>
+              <p className='my-1'>Free delivery for all orders over $140</p>
+            </div>
+          </div>
+
+          <div className="box p-7">
+            <div className="icon flex items-center justify-center">
+              <img className='w-12' src="/images/customer-service.png" alt="sales" />
+            </div>
+            <div className="info text-center my-3">
+              <h2 className='text-1xl font-bold my-1'>24/7 CUSTOMER SERVICES</h2>
+              <p className='my-1'>Friendly 24/7 customer support</p>
+            </div>
+          </div>
+
+          <div className="box p-7">
+            <div className="icon flex items-center justify-center">
+              <img className='w-12' src="/images/guarantee.png" alt="sales" />
+            </div>
+            <div className="info text-center my-3">
+              <h2 className='text-1xl font-bold my-1'>MONEY BACK GUARANTEE</h2>
+              <p className='my-1'>We reurn money within 30 days</p>
+            </div>
+          </div>
+
+        </div>
+
+        
       </div>
     </>
   );

@@ -88,11 +88,35 @@
 .loader-rating {
     display: flex;
     gap: 8px;
-}loader-
+}
 
-.loader-star {
+loader- .loader-star {
     width: 16px;
     height: 16px;
     background-color: #e0e0e0;
     border-radius: 50%;
+}
+
+/* styles/global.css */
+.spinner-border {
+    border-width: 4px;
+    border-color: #ccc;
+    border-top-color: transparent;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

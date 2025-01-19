@@ -1,6 +1,6 @@
 "use client"
 
-import { React, useState } from 'react'
+import { React, useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -8,9 +8,24 @@ import { useRouter } from 'next/navigation'
 const Navbar = () => {
 
   const [activePage, setactivePage] = useState('1')
-  const [accountOptions, setaccountOptions] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: session } = useSession()
   const router = useRouter()
+  const menuRef = useRef(null); // Reference to the menu
+
+  // Close the menu if user clicks outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setTimeout(() => {
+          setIsMenuOpen(false);
+        }, 3000);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <nav>
@@ -44,13 +59,13 @@ const Navbar = () => {
             <img className='hidden mlg:block cursor-pointer' src="/images/Wishlist.png" alt="wishlist" />
             <img className='cursor-pointer' src="/images/Cart.png" alt="cart" />
             <div className="account relative text-white">
-              <img onClick={() => {setaccountOptions(!accountOptions)}} className={`cursor-pointer rounded-full p-1 transition-all duration-300 ${(accountOptions) && 'bg-red-400'}`} src="/images/user.png" alt="user" />
-              <ul className={`account-options ${(accountOptions)? 'block':'hidden'} w-60 h-52 pl-4 rounded-md absolute top-10 right-0 bg-black bg-opacity-40 backdrop-blur-md`}>
-                <li onClick={() => {router.push(`/${(session) && session.user.first_name}`)}} className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/account.png" alt="Account" /><p>Manage My Account</p></li>
+              <img onClick={() => { setIsMenuOpen(!isMenuOpen) }} className={`cursor-pointer rounded-full p-1 transition-all duration-300 ${(isMenuOpen) && 'bg-red-400'}`} src="/images/user.png" alt="user" />
+              <ul ref={menuRef} className={`account-options ${(isMenuOpen) ? 'block' : 'hidden'} w-60 h-52 pl-4 rounded-md absolute top-11 right-0 bg-black bg-opacity-40 backdrop-blur-md`}>
+                <li onClick={() => { router.push(`/${(session) && session.user.first_name}`) }} className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/account.png" alt="Account" /><p>Manage My Account</p></li>
                 <li className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/orders.png" alt="Orders" /><p>My Order</p></li>
                 <li className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/cancel.png" alt="Cancellations" /><p>My Cancellations</p></li>
                 <li className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/favourites.png" alt="Reviews" /><p>My Reviews</p></li>
-                <li onClick={() => {signOut()}} className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/logout.png" alt="Logout" /><p>Logout</p></li>
+                <li onClick={() => { signOut() }} className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/logout.png" alt="Logout" /><p>Logout</p></li>
               </ul>
             </div>
           </div>

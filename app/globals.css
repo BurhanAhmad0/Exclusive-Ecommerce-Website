@@ -120,3 +120,10 @@ loader- .loader-star {
         transform: rotate(360deg);
     }
 }
+
+.layout {
+    display: grid;
+    grid-template-areas:
+        'ps5 women women'
+        'ps5 speaker perfume'
+}

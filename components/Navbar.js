@@ -19,7 +19,7 @@ const Navbar = () => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setTimeout(() => {
           setIsMenuOpen(false);
-        }, 3000);
+        }, 10000);
       }
     };
 
@@ -58,7 +58,7 @@ const Navbar = () => {
           <div className="nav-buttons flex items-center gap-3">
             <img className='hidden mlg:block cursor-pointer' src="/images/Wishlist.png" alt="wishlist" />
             <img className='cursor-pointer' src="/images/Cart.png" alt="cart" />
-            <div className="account relative text-white">
+            <div className="account relative z-20 text-white">
               <img onClick={() => { setIsMenuOpen(!isMenuOpen) }} className={`cursor-pointer rounded-full p-1 transition-all duration-300 ${(isMenuOpen) && 'bg-red-400'}`} src="/images/user.png" alt="user" />
               <ul ref={menuRef} className={`account-options ${(isMenuOpen) ? 'block' : 'hidden'} w-60 h-52 pl-4 rounded-md absolute top-11 right-0 bg-black bg-opacity-40 backdrop-blur-md`}>
                 <li onClick={() => {
@@ -70,7 +70,11 @@ const Navbar = () => {
                 <li className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/orders.png" alt="Orders" /><p>My Order</p></li>
                 <li className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/cancel.png" alt="Cancellations" /><p>My Cancellations</p></li>
                 <li className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/favourites.png" alt="Reviews" /><p>My Reviews</p></li>
-                <li onClick={() => { signOut() }} className='cursor-pointer flex items-center gap-3 my-4'><img className="w-5" src="/images/logout.png" alt="Logout" /><p>Logout</p></li>
+                <li onClick={() => {
+                  signOut();
+                }} className="cursor-pointer flex items-center gap-3 my-4">
+                  <img className="w-5" src="/images/logout.png" alt="Logout" /><p>Logout</p>
+                </li>
               </ul>
             </div>
           </div>

@@ -73,7 +73,7 @@ const Contact = () => {
             </div>
 
             <div className="main mb-10 flex items-center gap-5 px-24">
-                <div className="left w-[30%] shadow-gray-300 shadow-sm">
+                <div className="left w-[372px] shadow-gray-300 shadow-sm">
                     <div className="one p-8">
                         <div className="head flex items-center gap-3">
                             <img className='w-10' src="/images/phone.png" alt="Phone" />
@@ -100,7 +100,7 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="shadow-gray-300 h-[478px] shadow-sm grid grid-cols-1 gap-6 md:grid-cols-3 p-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="shadow-gray-300 w-[868px] h-[478px] shadow-sm grid grid-cols-1 gap-6 md:grid-cols-3 p-5">
                     <div>
                         <input
                             {...register("name", { required: { value: true, message: 'This field is required!' } })}

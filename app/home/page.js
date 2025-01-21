@@ -386,7 +386,7 @@ export default function Home() {
 
           <div className="layout h-[500px] grid grid-cols-2 grid-rows-2 gap-4 mt-10">
             <div className="ps5 relative flex justify-center items-center col-span-1 row-span-2 bg-black">
-              <Image width={300} height={300} src={'/images/ps5.png'} alt='img' />
+              <Image width={500} height={500} src={'/images/ps5.png'} alt='img' />
               <div className="text w-64 text-white absolute bottom-7 left-7">
                 <h2 className='font-semibold text-3xl mt-3'>PlayStation 5</h2>
                 <p className='mt-3'>Black and White version of the PS5 coming out on sale.</p>
@@ -457,7 +457,7 @@ export default function Home() {
 
         </div>
 
-        <div onClick={() => scrollToTop()} className={`scrollUp ${(isVisible)? 'block': 'hidden'} sticky cursor-pointer left-full bottom-8 bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center mb-7`}>
+        <div onClick={() => scrollToTop()} className={`scrollUp ${(isVisible) ? 'block' : 'hidden'} fixed cursor-pointer right-10 bottom-8 bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center`}>
           <span className="material-symbols-outlined">
             arrow_upward
           </span>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Countdown from 'react-countdown';
 import SkeletonLoader from '@/components/SkeletonLoader';
+import ProductCard from '@/components/ProductCard';
 
 export default function Home() {
 
@@ -132,22 +133,7 @@ export default function Home() {
                 <SkeletonLoader />
               ) : (
                 fetchData.map((item, index) => (
-                  <div key={index} id={index} className="card rounded-md w-56 h-64">
-                    <div className="image w-full h-40 overflow-hidden bg-gray-400 bg-opacity-30">
-                      <Image width={400} height={400} className="object-cover mix-blend-multiply w-full h-full" src={item.image} alt={item.title} />
-                    </div>
-                    <div className="info">
-                      <h2 className="text-xl font-semibold mt-1 truncate">{item.title}</h2>
-                      <p className="text-red-500 mt-1">${item.price}</p>
-                      <div className="rating mt-1 flex items-center gap-5">
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                      </div>
-                    </div>
-                  </div>
+                  <ProductCard key={index} item={item} />
                 ))
               )}
             </div>
@@ -259,22 +245,7 @@ export default function Home() {
                 <SkeletonLoader />
               ) : (
                 fetchData.map((item, index) => (
-                  <div key={index} id={index} className="card rounded-md w-56 h-64">
-                    <div className="image w-full h-40 bg-gray-400 bg-opacity-30 overflow-hidden">
-                      <Image width={400} height={400} className="object-cover mix-blend-multiply w-full h-full" src={item.image} alt={item.title} />
-                    </div>
-                    <div className="info">
-                      <h2 className="text-xl font-semibold mt-1 truncate">{item.title}</h2>
-                      <p className="text-red-500 mt-1">${item.price}</p>
-                      <div className="rating mt-1 flex items-center gap-5">
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                      </div>
-                    </div>
-                  </div>
+                  <ProductCard key={index} item={item} />
                 ))
               )}
             </div>
@@ -340,27 +311,12 @@ export default function Home() {
           </div>
 
           <div className="products mt-9">
-            <div className="cards py-3 flex items-center justify-evenly gap-10 flex-wrap">
+            <div className="cards py-3 flex items-center justify-evenly gap-8 flex-wrap">
               {loading ? (
                 <SkeletonLoader />
               ) : (
                 fetchData.slice(0, 8).map((item, index) => (
-                  <div key={index} id={index} className="card rounded-md w-52 h-64">
-                    <div className="image w-full h-40 bg-gray-400 bg-opacity-30 overflow-hidden">
-                      <Image width={500} height={500} className="object-cover mix-blend-multiply w-full h-full" src={item.image} alt={item.title} />
-                    </div>
-                    <div className="info">
-                      <h2 className="font-semibold mt-1 text-lg truncate">{item.title}</h2>
-                      <p className="text-red-500 mt-1">${item.price}</p>
-                      <div className="rating mt-1 flex items-center gap-5">
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                        <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                      </div>
-                    </div>
-                  </div>
+                  <ProductCard key={index} item={item} />
                 ))
               )}
             </div>

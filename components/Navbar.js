@@ -56,8 +56,8 @@ const Navbar = () => {
             <img className='mlg:absolute right-2 bottom-2' src="/images/search.png" alt="search" />
           </div>
           <div className="nav-buttons flex items-center gap-3">
-            <img className='hidden mlg:block cursor-pointer' src="/images/Wishlist.png" alt="wishlist" />
-            <img className='cursor-pointer' src="/images/Cart.png" alt="cart" />
+            <img onClick={() => {router.push('/whishlist')}} className='hidden mlg:block cursor-pointer' src="/images/Wishlist.png" alt="wishlist" />
+            <img onClick={() => {router.push('/cart')}} className='cursor-pointer' src="/images/Cart.png" alt="cart" />
             <div className="account relative z-20 text-white">
               <img onClick={() => { setIsMenuOpen(!isMenuOpen) }} className={`cursor-pointer rounded-full p-1 transition-all duration-300 ${(isMenuOpen) && 'bg-red-400'}`} src="/images/user.png" alt="user" />
               <ul ref={menuRef} className={`account-options ${(isMenuOpen) ? 'block' : 'hidden'} w-60 h-52 pl-4 rounded-md absolute top-11 right-0 bg-black bg-opacity-40 backdrop-blur-md`}>

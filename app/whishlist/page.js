@@ -1,14 +1,14 @@
 "use client"
 
 import { React, useState, useEffect } from 'react'
-import Image from 'next/image'
-import { useSession } from 'next-auth/react'
 import SkeletonLoader from '@/components/SkeletonLoader';
+import ProductCard from '@/components/ProductCard';
 
 const Whishlist = () => {
 
-    const { data: session } = useSession();
+    const [productQntyWhislist, setproductQntyWhislist] = useState(0);
     const [fetchData, setFetchData] = useState([]); // Initialize with an empty array
+    const [localStorageProducts, setLocalStorageProducts] = useState([]); // Initialize with an empty array
     const [loading, setLoading] = useState(true);
 
     // Define the fetchData function separately
@@ -24,8 +24,20 @@ const Whishlist = () => {
         }
     };
 
+    const getLocalStorageProducts = async () => {
+        try {
+            const products = JSON.parse(localStorage.getItem('wishlist'));
+            setproductQntyWhislist(products.length);
+            setLocalStorageProducts(products);
+            setLoading(false); // Set the fetched data to the state
+        } catch (error) {
+            console.error("Error fetching products:", error);
+        }
+    };
+
     useEffect(() => {
         fetchProducts(); // Call the fetch function inside useEffect
+        getLocalStorageProducts(); // Call the fetch function inside useEffect
     }, []); // Empty dependency array to run on component mount
 
     return (
@@ -34,7 +46,7 @@ const Whishlist = () => {
 
                 <div className="top flex justify-between items-center py-16">
                     <div className="path">
-                        <span>{'Whishlist (4)'}</span>
+                        <span>{`Whishlist (${productQntyWhislist})`}</span>
                     </div>
 
                     <div className="btn">
@@ -49,23 +61,8 @@ const Whishlist = () => {
                             {loading ? (
                                 <SkeletonLoader />
                             ) : (
-                                fetchData.map((item, index) => (
-                                    <div key={index} id={index} className="card rounded-md w-56 h-64">
-                                        <div className="image w-full h-40 overflow-hidden bg-gray-400 bg-opacity-30">
-                                            <Image width={400} height={400} className="object-cover mix-blend-multiply w-full h-full" src={item.image} alt={item.title} />
-                                        </div>
-                                        <div className="info">
-                                            <h2 className="text-xl font-semibold mt-1 truncate">{item.title}</h2>
-                                            <p className="text-red-500 mt-1">${item.price}</p>
-                                            <div className="rating mt-1 flex items-center gap-5">
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                localStorageProducts.map((item, index) => (
+                                    <ProductCard key={index} item={item} />
                                 ))
                             )}
                         </div>
@@ -92,22 +89,7 @@ const Whishlist = () => {
                                 <SkeletonLoader />
                             ) : (
                                 fetchData.map((item, index) => (
-                                    <div key={index} id={index} className="card rounded-md w-56 h-64">
-                                        <div className="image w-full h-40 overflow-hidden bg-gray-400 bg-opacity-30">
-                                            <Image width={400} height={400} className="object-cover mix-blend-multiply w-full h-full" src={item.image} alt={item.title} />
-                                        </div>
-                                        <div className="info">
-                                            <h2 className="text-xl font-semibold mt-1 truncate">{item.title}</h2>
-                                            <p className="text-red-500 mt-1">${item.price}</p>
-                                            <div className="rating mt-1 flex items-center gap-5">
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                                <span className="material-symbols-outlined w-1 text-[#FFAD33]">star</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ProductCard key={index} item={item} />
                                 ))
                             )}
                         </div>

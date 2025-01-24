@@ -3,6 +3,7 @@ import React from 'react'
 import { useSession } from "next-auth/react";
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
+import AccountSidebar from '@/components/AccountSidebar';
 
 
 const Account = () => {
@@ -74,26 +75,7 @@ const Account = () => {
                 </div>
 
                 <div className="main flex justify-between mb-24">
-                    <div className="left">
-                        <div className="col1">
-                            <label className='font-semibold text-lg'> Manage My Account</label>
-                            <ul className='mt-3'>
-                                <li className='ml-8 my-1 text-gray-400'><Link href="/account/profile">Profile</Link></li>
-                                <li className='ml-8 my-1 text-gray-400'><Link href="/account/orders">Address Book</Link></li>
-                                <li className='ml-8 my-1 text-gray-400'><Link href="/account/address">My Payment Options</Link></li>
-                            </ul>
-                        </div>
-                        <div className="col2 mt-5">
-                            <label className='font-semibold text-lg'> My Orders</label>
-                            <ul className='mt-3'>
-                                <li className='ml-8 my-1 text-gray-400'><Link href="/account/profile">My Returns</Link></li>
-                                <li className='ml-8 my-1 text-gray-400'><Link href="/account/orders">My Cancellations</Link></li>
-                            </ul>
-                        </div>
-                        <div className="col3 mt-5">
-                            <label className='font-semibold text-lg'> My Wishlist</label>
-                        </div>
-                    </div>
+                    <AccountSidebar />
 
                     <div className="right w-3/4 shadow-gray-300 shadow-sm">
                         <div className="label p-5">

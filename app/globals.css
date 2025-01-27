@@ -127,3 +127,8 @@ loader- .loader-star {
         'ps5 women women'
         'ps5 speaker perfume'
 }
+
+input[type="checkbox"]:checked {
+    accent-color: red;
+    /* Change checkbox color to red when checked */
+}

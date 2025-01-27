@@ -1,9 +1,12 @@
+"use client"
 import {React, useState} from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const ProductCard = ({ item, index }) => {
 
     const [addedToWhishlist, setaddedToWhishlist] = useState(false)
+    const router = useRouter();
 
     const addToWishlist = async (e) => {
         try {
@@ -30,9 +33,9 @@ const ProductCard = ({ item, index }) => {
                 setaddedToWhishlist(true)
 
                 // Save the updated wishlist back to localStorage
-                localStorage.setItem('wishlist', JSON.stringify(currentWishlist));
+                localStorage.setItem('wishlist', JSON.stringify(response));                
 
-                console.log(`${response.title} added to Wishlist`);
+                // console.log(`${response.title} added to Wishlist`);
             } else {
                 setaddedToWhishlist(false)
                 // Remove the product from the wishlist
@@ -41,7 +44,7 @@ const ProductCard = ({ item, index }) => {
                 // Save the updated wishlist back to localStorage
                 localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
 
-                console.log(`${response.title} removed from Wishlist`);
+                // console.log(`${response.title} removed from Wishlist`);
             }
         } catch (error) {
             console.error("Error adding to wishlist:", error);
@@ -86,11 +89,11 @@ const ProductCard = ({ item, index }) => {
                         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
                         {...(addedToWhishlist ? { fill: 'red' } : { fill: 'transparent' }) }
                         {...(addedToWhishlist ? { stroke: 'none' } : { stroke: 'black' }) }
-                        strokeWidth="2"
+                        strokeWidth="1.5"
                     />
                 </svg>
             </div>
-            <div className="viewProduct bg-gray-300 rounded-full w-7 h-7 flex items-center justify-center absolute top-11 right-2 cursor-pointer">
+            <div onClick={() => {router.push('/product')}} className="viewProduct bg-gray-300 rounded-full w-7 h-7 flex items-center justify-center absolute top-11 right-2 cursor-pointer">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -102,7 +105,7 @@ const ProductCard = ({ item, index }) => {
                         d="M12 4.5C7.5 4.5 3.75 7.5 2 12c1.75 4.5 5.5 7.5 10 7.5s8.25-3 10-7.5c-1.75-4.5-5.5-7.5-10-7.5zm0 12c-2.48 0-4.5-2.02-4.5-4.5s2.02-4.5 4.5-4.5 4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5zm0-7.5c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
                         fill="transparent"
                         stroke="black"
-                        strokeWidth="2"
+                        strokeWidth="1.5"
                     />
                 </svg>
             </div>

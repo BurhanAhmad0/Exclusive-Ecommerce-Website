@@ -26,14 +26,31 @@ const Whishlist = () => {
 
     const getLocalStorageProducts = async () => {
         try {
-            const products = JSON.parse(localStorage.getItem('wishlist'));
-            setproductQntyWhislist(products.length);
-            setLocalStorageProducts(products);
-            setLoading(false); // Set the fetched data to the state
+            const wishlist = localStorage.getItem('wishlist');
+            // console.log(wishlist);
+
+            if (wishlist) {
+                const products = [JSON.parse(wishlist)];
+                // console.log([products]);
+
+                // Check if products is an array
+                if (Array.isArray(products)) {
+                    setproductQntyWhislist(products.length);
+                    setLocalStorageProducts(products);
+                } else {
+                    console.error("Wishlist data is not an array");
+                }
+            } else {
+                console.error("No wishlist data in localStorage");
+            }
+
+            setLoading(false); // Set loading to false after the process completes
         } catch (error) {
             console.error("Error fetching products:", error);
+            setLoading(false); // Ensure loading is set to false even if there's an error
         }
     };
+
 
     useEffect(() => {
         fetchProducts(); // Call the fetch function inside useEffect
